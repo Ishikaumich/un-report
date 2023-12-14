@@ -1,0 +1,30 @@
+---
+title: "A UN Report on the relationship between GDP and Life Expectancy"
+author: "Ishika"
+date: "2023-12-14"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r packages}
+library(tidyverse)
+```
+
+This report was prepared to the attentions of the United Nations.
+
+```{r data}
+gapminder_1997 <- read_csv("gapminder_1997.csv")
+
+gapminder_1997
+```
+```{r plot}
+ggplot(gapminder_1997, aes(gdpPercap, lifeExp, color = continent, size = pop/1000000, shape = continent)) + 
+  geom_point() +
+  scale_color_brewer(palette = "Set1") +
+  labs(x= "GDP Per Capita", y = "Life Expectancy", size = "Population (in millions)")
+
+```
+
