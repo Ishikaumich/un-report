@@ -29,5 +29,18 @@ ggplot(gapminder_data, aes(year, pop/1000000)) +
   labs(x= "Year", y = "Population (in millions)")
 
 
+gapminder_data %>%
+  filter(pop > 500*1000000) %>% 
+  select(country) %>% 
+  unique()
+
+gapminder_data %>% 
+  filter(country != 'China' & country != 'India') %>% 
+  ggplot(aes(year, pop/1000000)) + 
+  facet_wrap(vars(continent)) +
+  geom_point() +
+  labs(x= "Year", y = "Population (in millions)")
+
+
 ```
 
