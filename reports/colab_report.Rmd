@@ -9,5 +9,25 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
+```{r library, include=FALSE}
+library(tidyverse)
 
-Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.
+```
+
+```{r data, include=FALSE}
+
+gapminder_data <- read_csv("../gapminder_data.csv") # specify the directory of the file because it is taking the woking directory of the markdown file.
+
+```
+
+
+```{r plots, echo=FALSE}
+
+ggplot(gapminder_data, aes(year, pop/1000000)) + 
+  facet_wrap(vars(continent)) +
+  geom_point() +
+  labs(x= "Year", y = "Population (in millions)")
+
+
+```
+
